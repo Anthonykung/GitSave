@@ -2,7 +2,11 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
-## v0.2.0
+## v0.3.1
+
+- Update README.md description
+
+## v0.2.0 && v0.3.0
 
 - Added information messages for improved user experience
 

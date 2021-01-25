@@ -1,12 +1,12 @@
 # GitSave README
 
-![GitSave Icon](images/GitSave.png)
+![GitSave Icon](./images/GitSave.png)
 
 GitSave automatically commit to Git on save.
 
 ## Features
 
-Does what the description said, runs `git commit -am "Update at {{ Timestamp }}"` on save.
+Does what the description said, runs `git commit {{ Current File}} -m "Update at {{ Timestamp }}"` on save.
 
 ## Usage
 
@@ -32,7 +32,11 @@ No known issues
 
 ## Release Notes
 
-## 0.2.0
+## v0.3.1
+
+- Update README.md description
+
+## 0.2.0 && 0.3.0
 
 Added information messages for improved user experience
 
