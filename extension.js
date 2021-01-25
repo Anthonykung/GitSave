@@ -28,6 +28,7 @@ function activate(context) {
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('\x1b[92m>_ GitSave Activated!');
+	vscode.window.showInformationMessage('GitSave Activated!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -84,7 +85,6 @@ function activate(context) {
 		disable
 	);
 }
-exports.activate = activate;
 
 // this method is called when your extension is deactivated
 function deactivate() {}
