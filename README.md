@@ -32,18 +32,8 @@ No known issues
 
 ## Release Notes
 
-## v0.3.1
+## v0.3.2
 
-- Update README.md description
+Fixed command not found error
 
-## 0.2.0 && 0.3.0
-
-Added information messages for improved user experience
-
-### 0.1.1
-
-Fixed bugs
-
-### 0.1.0
-
-Initial release of GitSafe
+See CHANGELOG.md for more

@@ -2,6 +2,10 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
+## v0.3.2
+
+- Fixed command not found error
+
 ## v0.3.1
 
 - Update README.md description

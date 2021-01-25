@@ -23,8 +23,6 @@ const fs = require('fs');
  * @param {vscode.ExtensionContext} context
  */
 
-var gitsavestatus = 0;
-
 function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -40,6 +38,8 @@ function activate(context) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from GitSave!');
 	});
+
+	let gitsavestatus = 0;
 
 	let save = vscode.workspace.onDidSaveTextDocument((TextDocument) => {
 		if (TextDocument.uri.scheme === "file" && gitsavestatus == 1) {
