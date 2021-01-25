@@ -20,6 +20,9 @@ const { exec, spawn, spawnSync } = require('child_process');
 /**
  * @param {vscode.ExtensionContext} context
  */
+
+var gitsavestatus = 0;
+
 function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -36,10 +39,8 @@ function activate(context) {
 		vscode.window.showInformationMessage('Hello World from GitSave!');
 	});
 
-	let status = 0;
-
 	let save = vscode.workspace.onDidSaveTextDocument((TextDocument) => {
-		if (TextDocument.uri.scheme === "file" && status === 1) {
+		if (TextDocument.uri.scheme === "file" && gitsavestatus === 1) {
 			let curry = new Date().toUTCString();
 			let cmd = exec('cd ' + vscode.workspace.workspaceFolders[0].uri.path + ' && git commit ' + TextDocument.uri.path + ' -m "Update at ' + curry + '"', (err, stdout, stderr) => {
 				console.log('\x1b[94m>_ GitSave Return:\n' + stdout);
