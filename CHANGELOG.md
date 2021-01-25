@@ -2,6 +2,11 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
+## v1.0.0
+
+- Changed commit to use reletive path
+- Added Terminal reuse
+
 ## v0.3.5
 
 - Added commit terminal show/hide

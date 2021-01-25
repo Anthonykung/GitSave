@@ -6,7 +6,12 @@ GitSave automatically commit to Git on save.
 
 ## Features
 
-Does what the description said, runs `git commit {{ Current File}} -m "Update at {{ Timestamp }}"` on save.
+Does what the description said, runs the following lines on save:
+
+```bash
+git add {{ Current File }}
+git commit {{ Current File }} -m "Update at {{ Timestamp }}"
+```
 
 ## Usage
 
@@ -17,6 +22,10 @@ Disable GitSave using Command Palette `GitSave: Disable`
 Run GPG Test using Command Palette `GitSave: GPG Test`
 
 Note: If commit with GPG, cache GPG passphrase and run GPG Test before using GitSave.
+
+Show GitSave commit terminal using Command Palette `GitSave: Show commit terminal` - Disabled by default
+
+Hide GitSave commit terminal using Command Palette `GitSave: Hide commit terminal`
 
 ## Requirements
 
@@ -32,8 +41,9 @@ No known issues
 
 ## Release Notes
 
-## v0.3.5
+## v1.0.0
 
-Added commit terminal show/hide
+- Changed commit to use reletive path
+- Added Terminal reuse
 
 See CHANGELOG.md for more

@@ -2,7 +2,7 @@
 	"name": "gitsave",
 	"displayName": "GitSave",
 	"description": "Automatically commit to Git on save",
-	"version": "0.3.5",
+	"version": "1.0.0",
 	"publisher": "Anthonykung",
 	"bugs": {
 		"url": "https://github.com/Anthonykung/GitSave/issues",

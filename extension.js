@@ -44,18 +44,27 @@ function activate(context) {
 
 	let gitsavestatus = 0;
 	let gitsaveshow = 1;
+	let commitcmd = null;
+	let testcmd = null;
 
 	let save = vscode.workspace.onDidSaveTextDocument((TextDocument) => {
 		if (TextDocument.uri.scheme === "file" && gitsavestatus == 1) {
 			let curry = new Date().toUTCString();
-			let cmd = vscode.window.createTerminal("GitSave Commit");
-			cmd.sendText('git add ' + TextDocument.uri.path + '\n');
-			cmd.sendText('git commit ' + TextDocument.uri.path + ' -m "Update at ' + curry + '"\n');
+			let curryFile = vscode.workspace.asRelativePath(TextDocument.uri.path);
+			if (!commitcmd) {
+				commitcmd = vscode.window.createTerminal("GitSave Commit");
+			}
+			else if (commitcmd.exitStatus || !gitsaveshow) {
+				commitcmd.dispose();
+				commitcmd = vscode.window.createTerminal("GitSave Commit");
+			}
+			commitcmd.sendText('git add ' + curryFile + '\n');
+			commitcmd.sendText('git commit ' + curryFile + ' -m "Update at ' + curry + '"\n');
 			if (gitsaveshow) {
-				cmd.show();
+				commitcmd.show();
 			}
 			else {
-				cmd.dispose();
+				commitcmd.hide();
 			}
 			vscode.window.showInformationMessage('GitSave Comitted');
 		}
@@ -65,9 +74,15 @@ function activate(context) {
 	});
 
 	let gpgtest = vscode.commands.registerCommand('gitsave.gpgtest', function () {
-		let cmd = vscode.window.createTerminal("GitSave GPG Test");
-		cmd.sendText('echo "GitSave Test" | gpg --clearsign\n');
-		cmd.show();
+		if (!testcmd) {
+			testcmd = vscode.window.createTerminal("GitSave GPG Test");
+		}
+		else if (testcmd.exitStatus) {
+			testcmd.dispose();
+			testcmd = vscode.window.createTerminal("GitSave GPG Test");
+		}
+		testcmd.sendText('echo "GitSave Test" | gpg --clearsign\n');
+		testcmd.show();
 	});
 
 	let disable = vscode.commands.registerCommand('gitsave.disable', function () {
