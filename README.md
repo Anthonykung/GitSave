@@ -32,6 +32,10 @@ No known issues
 
 ## Release Notes
 
+## 0.2.0
+
+Added information messages for improved user experience
+
 ### 0.1.1
 
 Fixed bugs

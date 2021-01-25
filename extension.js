@@ -13,6 +13,8 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const { exec, spawn, spawnSync } = require('child_process');
+const { createModuleResolutionCache, createEnumDeclaration } = require('typescript');
+const fs = require('fs');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -40,15 +42,19 @@ function activate(context) {
 	});
 
 	let save = vscode.workspace.onDidSaveTextDocument((TextDocument) => {
-		if (TextDocument.uri.scheme === "file" && gitsavestatus === 1) {
+		if (TextDocument.uri.scheme === "file" && gitsavestatus == 1) {
 			let curry = new Date().toUTCString();
-			let cmd = exec('cd ' + vscode.workspace.workspaceFolders[0].uri.path + ' && git commit ' + TextDocument.uri.path + ' -m "Update at ' + curry + '"', (err, stdout, stderr) => {
-				console.log('\x1b[94m>_ GitSave Return:\n' + stdout);
-				console.log('\x1b[91m>_ Git Error:\n' + stderr);
-				if (err) {
-					console.log('\x1b[91m>_ GitSave Error:\n' + err);
-				}
+			let cmd = vscode.window.createTerminal({
+				name: "GitSave Commit",
+				cwd: vscode.workspace.workspaceFolders[0].uri.path,
+				hideFromUser: false
 			});
+			cmd.sendText('git commit ' + TextDocument.uri.path + ' -m "Update at ' + curry + '"\n');
+			cmd.dispose();
+			vscode.window.showInformationMessage('GitSave Comitted');
+		}
+		else {
+			vscode.window.showInformationMessage('GitSave Not Enabled');
 		}
 	});
 
@@ -58,18 +64,18 @@ function activate(context) {
 			cwd: vscode.workspace.workspaceFolders[0].uri.path,
 			hideFromUser: false
 		});
-
 		cmd.sendText('echo "GitSave Test" | gpg --clearsign\n');
-
 		cmd.show();
 	});
 
 	let disable = vscode.commands.registerCommand('gitsave.disable', function () {
-		status = 0;
+		gitsavestatus = 0;
+		vscode.window.showInformationMessage('GitSave Disabled');
 	});
 
 	let enable = vscode.commands.registerCommand('gitsave.enable', function () {
-		status = 1;
+		gitsavestatus = 1;
+		vscode.window.showInformationMessage('GitSave Enabled');
 	});
 
 	context.subscriptions.push(
