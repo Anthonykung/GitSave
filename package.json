@@ -2,10 +2,22 @@
 	"name": "gitsave",
 	"displayName": "GitSave",
 	"description": "Automatically commit to Git on save",
-	"version": "0.0.1",
+	"version": "0.1.0",
+  "publisher": "Anthonykung",
+	"bugs": {
+			"url": "https://github.com/Anthonykung/GitSave/issues",
+			"email": "hi@anth.dev"
+	},
+	"repository": {
+			"type": "git",
+			"url": "https://github.com/Anthonykung/GitSave.git"
+	},
+	"homepage": "https://github.com/Anthonykung/GitSave/blob/master/README.md",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
+	"license": "Apache-2.0",
+	"icon": "images/GitSave.png",
 	"categories": [
 		"Other"
 	],

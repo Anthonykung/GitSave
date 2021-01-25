@@ -2,6 +2,10 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
-## [Unreleased]
+## v0.1.0
+
+- Update package.json & README.md
+
+## v0.0.1
 
 - Initial release

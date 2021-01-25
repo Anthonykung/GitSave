@@ -1,5 +1,7 @@
 # GitSave README
 
+![GitSave Icon](images/GitSave.png)
+
 GitSave automatically commit to Git on save.
 
 ## Features
@@ -30,6 +32,6 @@ No known issues
 
 ## Release Notes
 
-### 1.0.0
+### 0.1.0
 
 Initial release of GitSafe
