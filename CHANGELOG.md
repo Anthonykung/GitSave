@@ -2,6 +2,14 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
+## v0.3.5
+
+- Added commit terminal show/hide
+
+## v0.3.4
+
+- Testing extension functionality
+
 ## v0.3.3
 
 - Fixed command not found error

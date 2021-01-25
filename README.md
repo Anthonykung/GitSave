@@ -32,8 +32,8 @@ No known issues
 
 ## Release Notes
 
-## v0.3.3
+## v0.3.5
 
-Fixed command not found error
+Added commit terminal show/hide
 
 See CHANGELOG.md for more

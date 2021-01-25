@@ -9,6 +9,8 @@
  *                                        *
  ******************************************/
 
+console.log('\x1b[92m>_ GitSave Activating');
+
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
@@ -41,17 +43,20 @@ function activate(context) {
 	});
 
 	let gitsavestatus = 0;
+	let gitsaveshow = 1;
 
 	let save = vscode.workspace.onDidSaveTextDocument((TextDocument) => {
 		if (TextDocument.uri.scheme === "file" && gitsavestatus == 1) {
 			let curry = new Date().toUTCString();
-			let cmd = vscode.window.createTerminal({
-				name: "GitSave Commit",
-				cwd: vscode.workspace.workspaceFolders[0].uri.path,
-				hideFromUser: false
-			});
+			let cmd = vscode.window.createTerminal("GitSave Commit");
+			cmd.sendText('git add ' + TextDocument.uri.path + '\n');
 			cmd.sendText('git commit ' + TextDocument.uri.path + ' -m "Update at ' + curry + '"\n');
-			cmd.dispose();
+			if (gitsaveshow) {
+				cmd.show();
+			}
+			else {
+				cmd.dispose();
+			}
 			vscode.window.showInformationMessage('GitSave Comitted');
 		}
 		else {
@@ -60,11 +65,7 @@ function activate(context) {
 	});
 
 	let gpgtest = vscode.commands.registerCommand('gitsave.gpgtest', function () {
-		let cmd = vscode.window.createTerminal({
-			name: "GitSave GPG Test",
-			cwd: vscode.workspace.workspaceFolders[0].uri.path,
-			hideFromUser: false
-		});
+		let cmd = vscode.window.createTerminal("GitSave GPG Test");
 		cmd.sendText('echo "GitSave Test" | gpg --clearsign\n');
 		cmd.show();
 	});
@@ -79,12 +80,25 @@ function activate(context) {
 		vscode.window.showInformationMessage('GitSave Enabled');
 	});
 
+	let cmdshow = vscode.commands.registerCommand('gitsave.show', function () {
+		gitsaveshow = 1;
+		vscode.window.showInformationMessage('GitSave Showing');
+	});
+
+	let cmdhide = vscode.commands.registerCommand('gitsave.hide', function () {
+		gitsaveshow = 0;
+		vscode.window.showInformationMessage('GitSave Hidden');
+	});
+
 	context.subscriptions.push(
 		gpgtest,
 		enable,
-		disable
+		disable,
+		cmdshow,
+		cmdhide
 	);
 }
+exports.activate = activate;
 
 // this method is called when your extension is deactivated
 function deactivate() {}
