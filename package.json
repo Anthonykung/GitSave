@@ -22,11 +22,16 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"*",
+		"onCommand:gitsave.reactivate"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "gitsave.reactivate",
+				"title": "GitSave: Reactivate"
+			},
 			{
 				"command": "gitsave.gpgtest",
 				"title": "GitSave: GPG Test"
@@ -47,7 +52,47 @@
 				"command": "gitsave.hide",
 				"title": "GitSave: Hide commit terminal"
 			}
-		]
+		],
+		"configuration": {
+			"title": "GitSave",
+			"properties": {
+				"gitSave.operation.enableByDefault": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Set whether to enable GitSave by default"
+				},
+				"gitSave.operation.enableCommitSigning": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable or disable GPG commit signing"
+				},
+				"gitSave.operation.enablePushOnCommit": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Enable Git push on commit"
+				},
+				"gitSave.operation.showCommitTerminal": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Show terminal on commit"
+				},
+				"gitSave.customization.commitMessage": {
+					"type": "string",
+					"default": "Update at [: timestamp :]",
+					"markdownDescription": "Customize your commit message, use [: fileName :] and [: timestamp :]"
+				},
+				"gitSave.notification.showActivationMessages": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Shows a message whenever GitSave is activated"
+				},
+				"gitSave.notification.showCommitMessages": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Shows a message when GitSave commit is called"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",

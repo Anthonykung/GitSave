@@ -2,6 +2,10 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
+## v2.0.0
+
+- Revert back to absolute path
+
 ## v1.0.0
 
 - Changed commit to use reletive path
