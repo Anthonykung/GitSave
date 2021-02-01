@@ -24,6 +24,7 @@ Support on typing out GPG passphrase if not in chache will be out in v3.0.0 upda
 For most up to date README please refer to [GitHub Repo](https://gitsave.anth.dev)
 
 1. [Features](#Features)
+    1. [Example GIFs](#Example-GIFs)
 2. [Installation](#Installation)
     1. [Using Visual Studio Code Marketplace](#Using-Visual-Studio-Code-Marketplace)
     2. [Using GitHub](#Using-GitHub)
@@ -49,6 +50,8 @@ Does what the description said, runs the following lines on save:
 git add {{ Current File }}
 git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 ```
+
+### Example GIFs
 
 ## Installation
 
