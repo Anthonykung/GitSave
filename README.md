@@ -56,19 +56,19 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 #### Saving with Control + S
 
 <center>
-  <img src="./images/Control-S.gif" width="80%">
+  <img src="./images/Control-S.gif" width="50%">
 </center>
 
 #### Saving with VS Code Auto Save
 
 <center>
-  <img src="./images/Auto-Save.gif" width="80%">
+  <img src="./images/Auto-Save.gif" width="50%">
 </center>
 
 #### Using VS Code Terminal
 
 <center>
-  <img src="./images/bruh.gif" width="80%">
+  <img src="./images/VSC-Terminal.gif" width="50%">
 </center>
 
 ## Installation
@@ -118,6 +118,10 @@ Documentation coming soon
 You'll just need VS Code with Git enabled.
 
 ## Extension Settings
+
+<center>
+  <img src="./images/Configuration.png" width="50%">
+</center>
 
 ### Operation
 
