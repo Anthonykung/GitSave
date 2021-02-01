@@ -68,7 +68,7 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 #### Using VS Code Terminal
 
 <center>
-  <img src="./images/something.gif" width="80%">
+  <img src="./images/bruh.gif" width="80%">
 </center>
 
 ## Installation
