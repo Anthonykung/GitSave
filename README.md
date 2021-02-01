@@ -8,7 +8,7 @@
 -------------------------------------------------->
 
 <center>
-  <img src="./images/GitSave.png" width="200px">
+  <img src="https://vault.hailiga.org/Projects/GitSave/images/GitSave.png" width="200px">
 </center>
 
 # GitSave Intro
@@ -56,19 +56,19 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 #### Saving with Control + S
 
 <center>
-  <img src="./images/Control-S.gif" width="50%">
+  <img src="https://vault.hailiga.org/Projects/GitSave/images/Control-S.gif" width="50%">
 </center>
 
 #### Saving with VS Code Auto Save
 
 <center>
-  <img src="./images/Auto-Save.gif" width="50%">
+  <img src="https://vault.hailiga.org/Projects/GitSave/images/Auto-Save.gif" width="50%">
 </center>
 
 #### Using VS Code Terminal
 
 <center>
-  <img src="./images/VSC-Terminal.gif" width="50%">
+  <img src="https://vault.hailiga.org/Projects/GitSave/images/VSC-Terminal.gif" width="50%">
 </center>
 
 ## Installation
@@ -120,7 +120,7 @@ You'll just need VS Code with Git enabled.
 ## Extension Settings
 
 <center>
-  <img src="./images/Configuration.png" width="50%">
+  <img src="https://vault.hailiga.org/Projects/GitSave/images/Configuration.png" width="50%">
 </center>
 
 ### Operation
@@ -170,6 +170,10 @@ You'll just need VS Code with Git enabled.
 No known issues
 
 ## Release Notes
+
+## v2.1.2
+
+- Updated Images
 
 ## v2.1.1
 
