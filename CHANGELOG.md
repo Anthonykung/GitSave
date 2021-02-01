@@ -5,6 +5,9 @@ All notable changes to the "GitSave" extension will be documented in this file.
 ## v2.0.0
 
 - Revert back to absolute path
+- Added CLI error reporting
+- Enable GPG support
+- Allow option to VS Code terminal or child processes
 
 ## v1.0.0
 

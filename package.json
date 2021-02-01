@@ -51,6 +51,14 @@
 			{
 				"command": "gitsave.hide",
 				"title": "GitSave: Hide commit terminal"
+			},
+			{
+				"command": "gitsave.useTerminal",
+				"title": "GitSave: Use VS Code terminal"
+			},
+			{
+				"command": "gitsave.notUseTerminal",
+				"title": "GitSave: Do not use VS Code terminal"
 			}
 		],
 		"configuration": {
@@ -71,6 +79,11 @@
 					"default": false,
 					"markdownDescription": "Enable Git push on commit"
 				},
+				"gitSave.operation.useTerminal": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Use VS Code Terminal for commit"
+				},
 				"gitSave.operation.showCommitTerminal": {
 					"type": "boolean",
 					"default": false,
@@ -80,6 +93,11 @@
 					"type": "string",
 					"default": "Update at [: timestamp :]",
 					"markdownDescription": "Customize your commit message, use [: fileName :] and [: timestamp :]"
+				},
+				"gitSave.notification.showDisabledMessages": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Shows a message if GitSave is not enabled"
 				},
 				"gitSave.notification.showActivationMessages": {
 					"type": "boolean",

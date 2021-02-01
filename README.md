@@ -6,6 +6,10 @@ GitSave automatically commit to Git on save.
 
 ## Features
 
+Updates coming soon, v2.0.0 is out! You can now set your defaults in Extension Settings!
+
+Support on typing out GPG passphrase if not in chache will be out in v3.0.0 update. Currently an error will show if GPG failed to sign.
+
 Does what the description said, runs the following lines on save:
 
 ```bash
@@ -41,9 +45,11 @@ No known issues
 
 ## Release Notes
 
-## v1.0.0
+## v2.0.0
 
-- Changed commit to use reletive path
-- Added Terminal reuse
+- Revert back to absolute path
+- Added CLI error reporting
+- Enable GPG support
+- Allow option to VS Code terminal or child processes
 
 See CHANGELOG.md for more
