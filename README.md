@@ -56,7 +56,13 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 #### Saving with Control + S
 
 <center>
-  <img src="./images/Control-S.gif" width="200px">
+  <img src="./images/Control-S.gif" width="80%">
+</center>
+
+#### Saving with VS Code Auto Save
+
+<center>
+  <img src="./images/Auto-Save.gif" width="80%">
 </center>
 
 ## Installation
