@@ -76,7 +76,7 @@ function activate(context) {
 	// Declare Variables
 	// This initialize the variables with default
 	// but allow user to overwrite with command palette
-	const config = vscode.workspace.getConfiguration('gitSave');
+	let config = vscode.workspace.getConfiguration('gitSave');
 	let gsEnable = config.get('operation.enableByDefault');
 	let gsShowCommitTerminal = config.get('operation.showCommitTerminal');
 	let gsShowCommitMessage = config.get('notification.showCommitMessages');
@@ -129,6 +129,18 @@ function activate(context) {
 		}
 	});
 
+	vscode.workspace.onDidChangeConfiguration((event) => {
+		config = vscode.workspace.getConfiguration('gitSave');
+		gsEnable = config.get('operation.enableByDefault');
+		gsShowCommitTerminal = config.get('operation.showCommitTerminal');
+		gsShowCommitMessage = config.get('notification.showCommitMessages');
+		gsShowActivation = config.get('notification.showActivationMessages');
+		gsShowDisabledMessage = config.get('notification.showDisabledMessages');
+		gsUseTerminal = config.get('operation.useTerminal');
+		vscode.window.showInformationMessage('GitSave Configuration Updated');
+		console.log(extSuc, 'GitSave Configuration Updated' + extEnd);
+	});
+
 	let gpgtest = vscode.commands.registerCommand('gitsave.gpgtest', function () {
 		if (!gsTestCmd) {
 			gsTestCmd = vscode.window.createTerminal("GitSave GPG Test");
@@ -144,31 +156,55 @@ function activate(context) {
 	let disable = vscode.commands.registerCommand('gitsave.disable', function () {
 		gsEnable = 0;
 		vscode.window.showInformationMessage('GitSave Disabled');
+		console.log(extSuc, 'GitSave Disabled' + extEnd);
 	});
 
 	let enable = vscode.commands.registerCommand('gitsave.enable', function () {
 		gsEnable = 1;
 		vscode.window.showInformationMessage('GitSave Enabled');
+		console.log(extSuc, 'GitSave Enabled' + extEnd);
 	});
 
 	let cmdshow = vscode.commands.registerCommand('gitsave.show', function () {
 		gsShowCommitTerminal = 1;
 		vscode.window.showInformationMessage('GitSave Showing');
+		console.log(extSuc, 'GitSave Showing' + extEnd);
 	});
 
 	let cmdhide = vscode.commands.registerCommand('gitsave.hide', function () {
 		gsShowCommitTerminal = 0;
 		vscode.window.showInformationMessage('GitSave Hidden');
+		console.log(extSuc, 'GitSave Hidden' + extEnd);
 	});
 
 	let usecmd = vscode.commands.registerCommand('gitsave.useTerminal', function () {
 		gsUseTerminal = 1;
 		vscode.window.showInformationMessage('GitSave Using Terminal');
+		console.log(extSuc, 'GitSave Using Terminal' + extEnd);
 	});
 
 	let nocmd = vscode.commands.registerCommand('gitsave.notUseTerminal', function () {
 		gsUseTerminal = 0;
 		vscode.window.showInformationMessage('GitSave Not Using Terminal');
+		console.log(extSuc, 'GitSave Not Using Terminal' + extEnd);
+	});
+
+	let gsHideDisable = vscode.commands.registerCommand('gitsave.hideDisableMessage', function () {
+		gsShowDisabledMessage = 0;
+		vscode.window.showInformationMessage('GitSave Hiding Disabled Message');
+		console.log(extSuc, 'GitSave Hiding Disabled Message' + extEnd);
+	});
+
+	let reactivate = vscode.commands.registerCommand('gitsave.reactivate', function () {
+		config = vscode.workspace.getConfiguration('gitSave');
+		gsEnable = config.get('operation.enableByDefault');
+		gsShowCommitTerminal = config.get('operation.showCommitTerminal');
+		gsShowCommitMessage = config.get('notification.showCommitMessages');
+		gsShowActivation = config.get('notification.showActivationMessages');
+		gsShowDisabledMessage = config.get('notification.showDisabledMessages');
+		gsUseTerminal = config.get('operation.useTerminal');
+		vscode.window.showInformationMessage('GitSave Reactivated');
+		console.log(extSuc, 'GitSave Reactivated' + extEnd);
 	});
 
 	process.on('unhandledRejection', (reason, promise) => {
@@ -183,7 +219,9 @@ function activate(context) {
 		cmdshow,
 		cmdhide,
 		usecmd,
-		nocmd
+		nocmd,
+		gsHideDisable,
+		reactivate
 	);
 }
 exports.activate = activate;
@@ -202,16 +240,14 @@ async function gsRunGitAdd(curryFile, curryDir) {
 			vscode.window.showErrorMessage('GitSave: git add error, see log file for more info');
 			console.error(extErr, 'git add return the following error:' + extEnd + error);
 		}
-		else if (stderr) {
+		if (stderr) {
 			vscode.window.showErrorMessage('GitSave: git add error, see log file for more info');
 			console.error(extErr, 'git add return the following error:' + extEnd + stderr);
 		}
-		else if (stdout) {
+		if (stdout) {
 			console.log(extSuc, 'git add return the following output:' + extEnd + stdout);
 		}
-		else {
-			console.log(extSuc, 'git add completed' + extEnd);
-		}
+		console.log(extSuc, 'git add completed' + extEnd);
 	});
 }
 
@@ -221,19 +257,17 @@ async function gsRunGitCommit(curryFile, curryDir, curry) {
 	let str = 'cd ' + curryDir + ' && git commit ' + curryFile + ' -m "Update at ' + curry + '"\n';
 	exec(str, (error, stdout, stderr) => {
 		if (error) {
-			vscode.window.showErrorMessage('GitSave: git commit error, see log file for more info. Note: This error will show if you do not cache your GPG passphrase and uses GPG commit by default. Try using GPG Test for linux users on Command Palette or enable VS Code terminal on Command Palette.');
+			vscode.window.showErrorMessage('GitSave: git commit error, see log file for more info. Note: This error will show if you do not cache your GPG passphrase and uses GPG commit by default OR you have nothing to commit. Try using GPG Test for linux users on Command Palette or enable VS Code terminal on Command Palette.');
 			console.error(extErr, 'git commit return the following error:' + extEnd + error);
 		}
-		else if (stderr) {
+		if (stderr) {
 			vscode.window.showErrorMessage('GitSave: git commit error, see log file for more info');
 			console.error(extErr, 'git commit return the following stderr:' + extEnd + stderr);
 		}
-		else if (stdout) {
+		if (stdout) {
 			console.log(extSuc, 'git commit return the following output:' + extEnd + stdout);
 		}
-		else {
-			console.log(extSuc, 'git commit completed' + extEnd);
-		}
+		console.log(extSuc, 'git commit completed' + extEnd);
 	});
 	// let gsCommit = spawn(str);
 	// if (gsCommit.stdin.writable) {

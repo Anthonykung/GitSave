@@ -30,7 +30,7 @@
 		"commands": [
 			{
 				"command": "gitsave.reactivate",
-				"title": "GitSave: Reactivate"
+				"title": "GitSave: Reactivate (Updates the user settings)"
 			},
 			{
 				"command": "gitsave.gpgtest",
@@ -59,6 +59,10 @@
 			{
 				"command": "gitsave.notUseTerminal",
 				"title": "GitSave: Do not use VS Code terminal"
+			},
+			{
+				"command": "gitsave.hideDisableMessage",
+				"title": "GitSave: Hide disabled message"
 			}
 		],
 		"configuration": {

@@ -45,6 +45,12 @@ No known issues
 
 ## Release Notes
 
+## v2.1.0
+
+- Added auto update configuration on change
+- Added additional debug logging
+- Added hide disable message command to Command Palette
+
 ## v2.0.0
 
 - Revert back to absolute path
