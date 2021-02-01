@@ -2,6 +2,10 @@
 
 All notable changes to the "GitSave" extension will be documented in this file.
 
+## v2.1.1
+
+- Updated README
+
 ## v2.1.0
 
 - Added auto update configuration on change
