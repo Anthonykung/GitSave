@@ -53,10 +53,10 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 
 ### Example GIFs
 
-#### Auto Commit
+#### Saving with Control + S
 
 <center>
-  <img src="./images/GitSave.png" width="200px">
+  <img src="./images/Control-S.gif" width="200px">
 </center>
 
 ## Installation
