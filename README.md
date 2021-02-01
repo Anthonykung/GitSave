@@ -53,6 +53,12 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
 
 ### Example GIFs
 
+#### Auto Commit
+
+<center>
+  <img src="./images/GitSave.png" width="200px">
+</center>
+
 ## Installation
 
 ### Using Visual Studio Code Marketplace
