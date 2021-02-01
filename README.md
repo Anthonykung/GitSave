@@ -65,6 +65,12 @@ git commit {{ Current File }} -m "Update at {{ Timestamp }}"
   <img src="./images/Auto-Save.gif" width="80%">
 </center>
 
+#### Using VS Code Terminal
+
+<center>
+  <img src="./images/Auto-Save.gif" width="80%">
+</center>
+
 ## Installation
 
 ### Using Visual Studio Code Marketplace
